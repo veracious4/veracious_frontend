@@ -1,0 +1,78 @@
+.nav_bar_section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .footerSection {
+    background-color: rgb(49, 49, 49);
+    color: #dedede;
+    padding: 2rem;
+    font-size: 0.9rem;
+  }
+  .footerSectionInner {
+    margin-top: 6rem;
+  }
+  .footerColumn {
+    padding: 8px auto;
+    margin-bottom: 1.5rem;
+  }
+  .footerHeading {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 400;
+    color: var(--color-primary);
+  }
+  .footerSection p {
+    text-align: center;
+    margin-top: 10px;
+  }
+  #address {
+    margin-left: 1rem;
+    padding-right: 15px;
+  }
+  .contact_icons {
+    font-size: 1.3rem;
+    margin-left: 1rem;
+    margin-right: 5px;
+  }
+  
+  .footer__logo {
+    text-align: center;
+  }
+  .footer__brandlogo {
+    max-width: 18rem;
+    max-height: 18rem;
+    margin: 0 auto;
+  }
+  
+  .nav-link {
+      display: inline-block;
+      position: relative;
+      color: grey;
+      font-weight: bold;
+  }
+  
+  .navbar__brand {
+      background-color: rgb(255, 109, 11);
+      padding: 5px 10px;
+      border-radius: 5px;
+  }
+  
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(255, 109, 11);;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  

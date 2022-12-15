@@ -1,38 +1,102 @@
-.App {
+a{
+  text-decoration: none;
+}
+
+/* Text Beautification*/
+.rainbow-lr {
+  background: linear-gradient(to right, #A44BC7, cyan, blue, violet);
+  color:transparent;
+  background-clip: text;
+}
+
+.rainbow-td {
+  background: rgb(255, 109, 11);
+  color:transparent;
+  background-clip: text;
+}
+.red_orange_gradient{
+  background: rgb(254, 82, 8);
+  background: -moz-linear-gradient(213deg, #dd7c0d 8%, rgb(242 99 99) 35%, rgb(255, 109, 11) 46%, rgb(246, 100, 22) 70%, #fca757 100%);
+  background: -webkit-linear-gradient(213deg, #dd4b0d 8%,rgb(242 99 99) 35%, rgb(255, 109, 11) 46%, rgb(246, 100, 22) 70%, #fca757 100%);
+  background: linear-gradient(213deg, #dd4b0d 8%,rgb(242 99 99) 35%, rgb(255, 109, 11) 46%, rgb(246, 100, 22) 70%, #fca757 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0c0759",endColorstr="#0082ff",GradientType=1);
+  color:transparent;
+  background-clip: text;
+}
+
+
+/**************************************************/
+/*Section and Headings*/
+
+.heading_section_row{
+  margin-top:9rem !important;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.section_heading{
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 500;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.section_content{
+  padding-bottom: 5rem;
+  padding-top:3rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.new_section{
+  border-top: 1px solid #d3d3d3;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.new_component{
+  background-color: #fafafa;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.section__image{
+  text-align: center;
+}
+/**********************************************/
+/*Buttons*/
+.form__button{
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px !important;
+}
+.large_btn{
+  border:none;
+  /* padding: .6rem 2rem; */
+  padding: 0.7rem 1.2rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  color:white;
+  margin: auto !important;
+}
+.orange_red_gradiend_btn{
+  background-image: linear-gradient(to right, #fca757, #ff5858);
+}
+
+/* Customized Scrollbar*/
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+Track
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0B1126; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0B1126; 
 }
