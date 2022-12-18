@@ -72,7 +72,7 @@ class FactValidator extends Component {
             verScore = "Server Error Couldn't get the score";
         }
         else if(this.props.factValidateData.message){
-            const trustScore = this.props.factValidateData.message.trust_score * 100;
+            const trustScore = (this.props.factValidateData.message.trust_score * 100).toFixed(2);
             verMess = verdictMessage(trustScore);
             verScore = trustScore + "%";
         }
