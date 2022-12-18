@@ -62,23 +62,27 @@ class FactValidator extends Component {
 
     render(){
 
-        var verMess = "", verScore = "";
+        var verMess = "", verScore = "", processing = "Validate";
         if(this.props.factValidateData.isLoading){
             verMess = "Getting the verdict....";
             verScore = "Getting the score....";
+            processing = "Running Validator";
         }
         else if(this.props.factValidateData.error){
             verMess = "Server Error Couldn't get the verdict";
             verScore = "Server Error Couldn't get the score";
+            processing = "Validate";
         }
         else if(this.props.factValidateData.message){
             const trustScore = (this.props.factValidateData.message.trust_score * 100).toFixed(2);
             verMess = verdictMessage(trustScore);
             verScore = trustScore + "%";
+            processing = "Validate";
         }
         else {
             verMess = "The verdict message will appear here..";
             verScore = "The trust score will appear here..";
+            processing = "Validate";
         }
 
         return (
@@ -98,7 +102,7 @@ class FactValidator extends Component {
                             </Form.Group>
                             <div className="form__btn">
                                 <button className="large_btn orange_red_gradiend_btn" type="submit" onClick={this.handleSubmit}>
-                                    <BsGearFill /> Validate
+                                    <BsGearFill /> { processing }
                                 </button>
                             </div>
                         </Form>
