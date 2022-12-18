@@ -4,5 +4,5 @@ import factValidateReducer from './factValidateReducer';
 
 export default combineReducers({
     auth:authReducer,
-    factValidateReducer
+    factValidateData:factValidateReducer
 });

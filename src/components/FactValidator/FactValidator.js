@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { factValidator } from '../../actions';
 import { Container, Row, Col, Image, Form } from 'react-bootstrap';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { BsGearFill } from 'react-icons/bs';
@@ -12,7 +14,10 @@ class FactValidator extends Component {
         super(props);
 
         this.state={
-            trustScore: 10
+            factDescription: '',
+            errors: {
+                factDescription: ''
+            }
         }
     }
 
@@ -20,7 +25,62 @@ class FactValidator extends Component {
         document.body.style.backgroundColor = "#E0E9EE";
     }
 
+    handleInputChange = (event) => {
+        const target = event.target;
+        const name = target.name;
+        this.setState({
+            [name]: event.target.value
+        });
+    }
+
+    validateForm = (data) => {
+        const { factDescription } = data;
+        let factDescriptionError = "", error = false;
+
+        if (!factDescription || !factDescription.trim()) {
+            factDescriptionError = "Enter fact description";
+            error = true;
+        }
+
+        this.setState(prevState => ({
+            errors: {
+                factDescription: factDescriptionError
+            }
+        }))
+
+        return !error;
+    }
+
+    handleSubmit = async (event) => {
+        event.preventDefault();
+        const isValid = this.validateForm(this.state);
+
+        if(isValid){
+            await this.props.factValidator(this.state.factDescription)
+        }
+    }
+
     render(){
+
+        var verMess = "", verScore = "";
+        if(this.props.factValidateData.isLoading){
+            verMess = "Getting the verdict....";
+            verScore = "Getting the score....";
+        }
+        else if(this.props.factValidateData.error){
+            verMess = "Server Error Couldn't get the verdict";
+            verScore = "Server Error Couldn't get the score";
+        }
+        else if(this.props.factValidateData.message){
+            const trustScore = this.props.factValidateData.message.trust_score * 100;
+            verMess = verdictMessage(trustScore);
+            verScore = trustScore + "%";
+        }
+        else {
+            verMess = "The verdict message will appear here..";
+            verScore = "The trust score will appear here..";
+        }
+
         return (
             <div className='container'>
                 <div className="row">
@@ -33,7 +93,8 @@ class FactValidator extends Component {
                         <Form>
                             <Form.Group controlId="formBasicEmail" className="form_field_div">
                                 <Form.Label><span className="form__icon"><MdOutlineFactCheck /></span><span className="label__important">*</span> Enter Fact Description</Form.Label>
-                                <Form.Control className="mt-4" as="textarea" rows={4} placeholder="Write Here.." />
+                                <Form.Control className="mt-4" as="textarea" rows={4} placeholder="Write Here.." name="factDescription" onChange={this.handleInputChange}/>
+                                <div className="invalid__feedback">{this.state.errors.factDescription}</div>
                             </Form.Group>
                             <div className="form__btn">
                                 <button className="large_btn orange_red_gradiend_btn" type="submit" onClick={this.handleSubmit}>
@@ -44,9 +105,9 @@ class FactValidator extends Component {
                     </Col>
                     <Col xs={11} md={5} className="form_content_div login_form_div">
                         <h2 className="verdict_heading red_orange_gradient">Final Verdict</h2>
-                        <h5 className="verdict_description">{verdictMessage(this.state.trustScore)}</h5>
+                        <h5 className="verdict_description">{verMess}</h5>
                         <h2 className="verdict_heading red_orange_gradient">Trust Score</h2>
-                        <h3 className="verdict_description">{this.state.trustScore+"%"}</h3>
+                        <h3 className="verdict_description">{verScore}</h3>
                     </Col>
                 </div>
             </div>
@@ -54,4 +115,12 @@ class FactValidator extends Component {
     }
 }
 
-export default FactValidator;
+const mapStateToProps = (state, ownProps)=>{
+    return({
+        ...ownProps,
+        factValidateData: state.factValidateData
+    })
+
+}
+
+export default connect(mapStateToProps, {factValidator})(FactValidator);

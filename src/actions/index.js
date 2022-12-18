@@ -1,6 +1,5 @@
 import {signUp, signIn, signOut} from './auth'
-import { factValidator } from './factValidate';
-
+import { factValidator } from './factValidator';
 
 //Auth
 export {signUp};
