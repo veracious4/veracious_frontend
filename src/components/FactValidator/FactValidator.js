@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { factValidator } from '../../actions';
+import { factValidator, factValidatorAsync } from '../../actions';
 import { Container, Row, Col, Image, Form } from 'react-bootstrap';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { BsGearFill } from 'react-icons/bs';
@@ -56,7 +56,9 @@ class FactValidator extends Component {
         const isValid = this.validateForm(this.state);
 
         if(isValid){
+            // await this.props.factValidatorAsync(this.state.factDescription)
             await this.props.factValidator(this.state.factDescription)
+
         }
     }
 
@@ -127,4 +129,4 @@ const mapStateToProps = (state, ownProps)=>{
 
 }
 
-export default connect(mapStateToProps, {factValidator})(FactValidator);
+export default connect(mapStateToProps, {factValidator, factValidatorAsync})(FactValidator);
