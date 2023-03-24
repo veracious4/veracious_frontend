@@ -56,8 +56,8 @@ class FactValidator extends Component {
         const isValid = this.validateForm(this.state);
 
         if(isValid){
-            // await this.props.factValidatorAsync(this.state.factDescription)
-            await this.props.factValidator(this.state.factDescription)
+            await this.props.factValidatorAsync(this.state.factDescription)
+            // await this.props.factValidator(this.state.factDescription)
 
         }
     }
