@@ -30,7 +30,7 @@ export const factValidatorAsync = (data) => async (dispatch,getState) =>{
             let response2 = await record.get(`/validate-fact-async-status?correlation_id=${correlation_id}`);
             
             while(response2.status==202){
-                sleep(100); // sleep for 100 milliseconds
+                sleep(10000); // sleep for 100 milliseconds
                 response2 = await record.get(`/validate-fact-async-status?correlation_id=${correlation_id}`);
             }
 
