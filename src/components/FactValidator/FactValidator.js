@@ -8,6 +8,14 @@ import { MdOutlineFactCheck } from 'react-icons/md';
 import verdictMessage from '../../utils/VerdictMessage';
 import './FactValidator.css';
 
+const references = [{
+    url: "www.google.com", score: 45.34
+}, {
+    url: "www.apple.com", score: 90.87
+}, {
+    url: "www.facebook.com", score: 23.89
+}]
+
 class FactValidator extends Component {
 
     constructor(props){
@@ -62,6 +70,8 @@ class FactValidator extends Component {
         }
     }
 
+    //renderReferencesList = 
+
     render(){
 
         var verMess = "", verScore = "", processing = "Validate";
@@ -94,7 +104,7 @@ class FactValidator extends Component {
                         <h3 className="section_heading red_orange_gradient main_heading">Fact Validator</h3>
                     </div>
                 </div>
-                <div className='row main_content'>
+                <div className='row main_content'  style={{marginBottom: 10}}>
                     <Col xs={11} md={5} className="form_content_div login_form_div">
                         <Form>
                             <Form.Group controlId="formBasicEmail" className="form_field_div">
@@ -114,6 +124,24 @@ class FactValidator extends Component {
                         <h5 className="verdict_description">{verMess}</h5>
                         <h2 className="verdict_heading red_orange_gradient">Trust Score</h2>
                         <h3 className="verdict_description">{verScore}</h3>
+                    </Col>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <h3 className="section_heading red_orange_gradient main_heading">How Veracious concludes result ?</h3>
+                    </div>
+                </div>
+                <div className='row main_content'>
+                    <Col xs={11} md={11} className="form_content_div login_form_div">
+                        <h3 className="references_heading red_orange_gradient">Following sources were referred</h3>
+                        {
+                            references.map((ref) => (
+                                <>
+                                    <h5 className="references_sources_item"><a className="reference_sources" href={ref.url}>{ref.url}</a></h5>
+                                    <h5 className="references_scores_item">suggests {ref.score}% certainity</h5>
+                                </>
+                            ))
+                        }
                     </Col>
                 </div>
             </div>

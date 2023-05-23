@@ -22,12 +22,35 @@
     color: #616263;
 }
 
+.references_heading {
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.references_sources_item {
+    margin-top: 0;
+    margin-bottom: 40px;
+    margin-left: 50px;
+    color: #616263;
+}
+
+.references_scores_item {
+    margin-bottom: 50px;
+    margin-left: 50px;
+    color: #616263;
+}
+
+.reference_sources {
+    color: #616263;
+}
+
 .form_content_div{
     background-color: #f5f5f5;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px #898989;
     margin: 2rem auto;
+    margin-bottom: 0 !important;
 }
 
 .form_heading{
